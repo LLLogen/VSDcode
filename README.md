@@ -53,7 +53,7 @@ gdrive download 1_SBj4sZ0gUqfBon1gFBiNRAmfHv5w_ph --recursive
 
 ## Run
 ```bash
-## The all the data, pretrained models, and image features ready, you can train the model:
+## When all the data, pretrained models, and image features get ready, you can train the model:
 bash ./baseline.sh gpu_num
 ```
 
