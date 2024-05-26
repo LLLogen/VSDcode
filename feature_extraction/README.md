@@ -10,7 +10,6 @@ We store features in hdf5 format.
 
 Please follow [the original installation guide](https://github.com/airsplay/py-bottom-up-attention#installation).
 
-## Manually extract & convert features (optional)
+## Run Manually extract & convert features
 
-* `_prpoposal.py`: extract features from 36 detected boxes
-* `_gt.py`: extract features from ground truth boxes
+* Run the `sp_prpoposal.py`: extract features from 36 detected boxes.
