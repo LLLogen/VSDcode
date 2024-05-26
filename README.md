@@ -48,8 +48,12 @@ python -c "import language_evaluation; language_evaluation.download('coco')"
 gdrive download 1_SBj4sZ0gUqfBon1gFBiNRAmfHv5w_ph --recursive
 ```
 
+## Pre-extracated Image Features
+- Refer to [Featrue Extraction](https://github.com/LLLogen/VSDcode/tree/main/feature_extraction)
+
 ## Run
 ```bash
+## The all the data, pretrained models, and image features ready, you can train the model:
 bash ./baseline.sh gpu_num
 ```
 
