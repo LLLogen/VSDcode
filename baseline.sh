@@ -14,7 +14,7 @@ python -m torch.distributed.launch \
         --lr 5e-5 \
         --epochs 20 \
         --num_workers 4 \
-        --backbone '../t5model' \
+        --backbone 'google/flan-t5-base' \
         --output $output ${@:2} \
         --load ./VLModel/snap/vlt5/Epoch30 \
         --num_beams 5 \
