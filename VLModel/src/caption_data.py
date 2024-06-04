@@ -404,7 +404,7 @@ class VSDCaptionFineTuneDataset(Dataset):
                     vg_classes.append(obj.split(',')[0].lower().strip())
             self.vg_classes = vg_classes
 
-        data_info_path = dataset_dir.joinpath(f'VSDv1/{split}.json')
+        data_info_path = dataset_dir.joinpath(f'task1-2/{split}_description.json')
         with open(data_info_path) as f:
             dataset = json.load(f)
 
@@ -415,22 +415,22 @@ class VSDCaptionFineTuneDataset(Dataset):
             img_id = datum['img_id'].replace('.jpg', "")
             img_id = img_id.replace('.png', "")
             if self.mode == 'train':
-                for d in datum['captions']:
+                for d in datum['description']:
                     new_datum = {
                         'img_id': img_id,
                         'sent': d.strip(),
-                        'subject_and_objects': [[triple['s'], triple['p'], triple['o']] for triple in datum['triple_list']],
-                        "predicate": [triple['p'] for triple in datum['triple_list']],
-                        'targets': [caption.strip() for caption in datum['captions']],
+                        'subject_and_objects': [[triple['s'], triple['o']] for triple in datum['triple_list']],
+                        # "predicate": [triple['p'] for triple in datum['triple_list']],
+                        'targets': [caption.strip() for caption in datum['description']],
                         'is_train': True
                     }
                     data.append(new_datum)
             else:
                 new_datum = {
                     'img_id': img_id,
-                    # 'subject_and_objects': [(triple['s'], triple['o']) for triple in datum['triple_list']],
-                    'subject_and_objects': [[triple['s'], triple['p'], triple['o']] for triple in datum['triple_list']],
-                    'targets': [caption.strip() for caption in datum['captions']],
+                    'subject_and_objects': [(triple['s'], triple['o']) for triple in datum['triple_list']],
+                    # 'subject_and_objects': [[triple['s'], triple['p'], triple['o']] for triple in datum['triple_list']],
+                    'targets': [caption.strip() for caption in datum['description']],
                     'is_train': False
                 }
                 data.append(new_datum)
@@ -547,7 +547,7 @@ class VSDCaptionFineTuneDataset(Dataset):
                 input_tokens.append(subject_and_object[0])
                 # input_tokens.append(f'<extra_id_{i}>')
                 # predciate_sequence.append(subject_and_object[1])
-                input_tokens.append(subject_and_object[2])
+                input_tokens.append(subject_and_object[1])
 
             input_text = ' '.join(input_tokens)
             
